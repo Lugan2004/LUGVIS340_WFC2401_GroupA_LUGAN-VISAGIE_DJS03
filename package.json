@@ -1,12 +1,16 @@
 {
-  "name": "lugvis340_wfc2401_groupa_lugan-visagie_djs03",
+  "name": "lugvis340_wfc2401_groupa_lugan-visagie_djs02",
   "version": "1.0.0",
-  "description": "Dive into the delightful world of \"Book Connect,\" where literary adventures await at your fingertips! Browse, explore, and uncover your next great read from a vast, vibrant collection. Whether you're a fan of thrilling mysteries, epic fantasies, or heartwarming romances, \"Book Connect\" brings the magic of books directly to you. Happy reading!",
-  "main": "data.js",
+  "description": "This project focuses on enhancing a web-based Whole Number Divider application. It's designed to help students apply their knowledge of error handling, guided by specific user stories. Before proceeding, familiarise yourself with the Gherkin syntax, a crucial tool for understanding user stories and requirements. Refer to the provided reading materials for a comprehensive guide. Below is the HTML and JavaScript code for a “Whole Number Divider”. At the moment it only meets two user stories (see below under “Resolved Stories”). Please ensure that it meets all user stories listed below:",
+  "main": "scripts.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-wesbos": "^4.0.1"
+  }
 }
