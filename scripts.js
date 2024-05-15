@@ -1,10 +1,4 @@
-// // data.js
-// export const books = [...]; // existing book data
-// export const authors = { ... }; // existing author data
-// export const genres = { ... }; // existing genre data
-// export const BOOKS_PER_PAGE = 36;
-
-// app.js
+// scripts.js
 import { theme } from './theme.js';
 import { bookList } from './bookList.js';
 import { authors } from './data.js';
