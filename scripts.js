@@ -7,6 +7,7 @@
 // app.js
 import { theme } from './theme.js';
 import { bookList } from './bookList.js';
+import { authors } from './data.js';
 
 theme.init();
 bookList.init();
@@ -23,22 +24,21 @@ function handleSearch(event) {
 function handleSettingsSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
-  const { theme } = Object.fromEntries(formData);
+  const { theme: themeOption } = Object.fromEntries(formData);
   theme.toggleTheme();
+  console.log(themeOption);
   document.querySelector('[data-settings-overlay]').open = false;
 }
 
 function handleListClick(event) {
   const pathArray = Array.from(event.path || event.composedPath());
   let active = null;
-  const books = []; // Define 'books' array here
-  const authors = {}; // Define 'authors' object here
 
   for (const node of pathArray) {
     if (active) break;
     if (node?.dataset?.preview) {
       const bookId = node.dataset.preview;
-      active = books.find((book) => book.id === bookId);
+      active = bookList.matches.find((book) => book.id === bookId);
     }
   }
 
