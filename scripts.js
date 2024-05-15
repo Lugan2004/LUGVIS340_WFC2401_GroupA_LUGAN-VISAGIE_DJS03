@@ -14,10 +14,14 @@ bookList.init();
 
 function handleSearch(event) {
   event.preventDefault();
+
   const formData = new FormData(event.target);
   const filters = Object.fromEntries(formData);
-  bookList.filterBooks(filters);
-  document.querySelector('[data-search-overlay]').open = false;
+
+  const messageElement = document.querySelector('[data-list-message]');
+  const searchOverlay = document.querySelector('[data-search-overlay]');
+
+  bookList.filterBooks(filters, messageElement, searchOverlay);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

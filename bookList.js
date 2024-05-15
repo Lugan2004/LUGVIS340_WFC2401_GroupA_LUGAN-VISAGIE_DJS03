@@ -52,7 +52,9 @@ export const bookList = {
     document.querySelector(selector).appendChild(fragment);
   },
 
-  filterBooks(filters) {
+  // bookList.js
+  // bookList.js
+  filterBooks(filters, messageElement, searchOverlay) {
     this.matches = books.filter((book) => {
       const genreMatch =
         filters.genre === 'any' || book.genres.includes(filters.genre);
@@ -63,9 +65,21 @@ export const bookList = {
         filters.author === 'any' || book.author === filters.author;
       return genreMatch && titleMatch && authorMatch;
     });
+
+    // Clear existing book previews
+    const listItemsContainer = document.querySelector('[data-list-items]');
+    listItemsContainer.innerHTML = '';
+
     this.page = 1;
     this.renderBooks();
     this.updateListButton();
+
+    if (this.matches.length < 1) {
+      messageElement.classList.add('list__message_show');
+    } else {
+      messageElement.classList.remove('list__message_show');
+      searchOverlay.open = false;
+    }
   },
 
   updateListButton() {
