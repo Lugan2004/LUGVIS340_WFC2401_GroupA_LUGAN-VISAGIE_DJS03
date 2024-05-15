@@ -6,19 +6,24 @@ import { authors } from './data.js';
 theme.init();
 bookList.init();
 
+/**
+ * Handles the search form submission.
+ * @param {Event} event - The form submission event.
+ */
 function handleSearch(event) {
   event.preventDefault();
-
   const formData = new FormData(event.target);
   const filters = Object.fromEntries(formData);
-
   const messageElement = document.querySelector('[data-list-message]');
   const searchOverlay = document.querySelector('[data-search-overlay]');
-
   bookList.filterBooks(filters, messageElement, searchOverlay);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+/**
+ * Handles the settings form submission.
+ * @param {Event} event - The form submission event.
+ */
 function handleSettingsSubmit(event) {
   event.preventDefault();
   const formData = new FormData(event.target);
@@ -28,10 +33,13 @@ function handleSettingsSubmit(event) {
   document.querySelector('[data-settings-overlay]').open = false;
 }
 
+/**
+ * Handles click events on the book list items.
+ * @param {Event} event - The click event.
+ */
 function handleListClick(event) {
   const pathArray = Array.from(event.path || event.composedPath());
   let active = null;
-
   for (const node of pathArray) {
     if (active) break;
     if (node?.dataset?.preview) {
@@ -39,7 +47,6 @@ function handleListClick(event) {
       active = bookList.matches.find((book) => book.id === bookId);
     }
   }
-
   if (active) {
     const { author, description, image, published, title } = active;
     document.querySelector('[data-list-active]').open = true;
@@ -52,6 +59,7 @@ function handleListClick(event) {
   }
 }
 
+// Event listeners
 document
   .querySelector('[data-search-form]')
   .addEventListener('submit', handleSearch);
