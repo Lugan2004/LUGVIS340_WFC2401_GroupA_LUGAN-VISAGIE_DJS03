@@ -5,25 +5,50 @@ let matches = books;
 
 const starting = document.createDocumentFragment();
 
-for (const { author, id, image, title } of matches.slice(0, BOOKS_PER_PAGE)) {
-  const element = document.createElement('button');
-  element.classList = 'preview';
+// Function to create a book preview element
+function createBookPreview({ author, id, image, title }) {
+  // Create the main div element for the book preview
+  const element = document.createElement('div');
+  element.classList.add('preview');
   element.setAttribute('data-preview', id);
 
-  element.innerHTML = `
-        <img
-            class="preview__image"
-            src="${image}"
-        />
-        
-        <div class="preview__info">
-            <h3 class="preview__title">${title}</h3>
-            <div class="preview__author">${authors[author]}</div>
-        </div>
-    `;
+  // Create the image element and set its source
+  const imageElement = document.createElement('img');
+  imageElement.classList.add('preview__image');
+  imageElement.src = image;
 
-  starting.appendChild(element);
+  // Create the div element to hold the title and author
+  const infoElement = document.createElement('div');
+  infoElement.classList.add('preview__info');
+
+  // Create the title element and set its text content
+  const titleElement = document.createElement('h3');
+  titleElement.classList.add('preview__title');
+  titleElement.textContent = title;
+
+  // Create the author element and set its text content
+  const authorElement = document.createElement('div');
+  authorElement.classList.add('preview__author');
+  authorElement.textContent = authors[author];
+
+  // Append the title and author elements to the info element
+  infoElement.appendChild(titleElement);
+  infoElement.appendChild(authorElement);
+
+  // Append the image and info elements to the main element
+  element.appendChild(imageElement);
+  element.appendChild(infoElement);
+
+  // Return the main element
+  return element;
 }
+
+// Map the createBookPreview function over the sliced matches array
+// to create an array of book preview elements
+const previews = matches.slice(0, BOOKS_PER_PAGE).map(createBookPreview);
+
+// Append all the book preview elements to the starting element
+starting.append(...previews);
 
 document.querySelector('[data-list-items]').appendChild(starting);
 
