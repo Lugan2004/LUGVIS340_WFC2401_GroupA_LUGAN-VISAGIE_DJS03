@@ -1,7 +1,7 @@
 // scripts.js
 import { theme } from './theme.js';
 import { bookList } from './bookList.js';
-import { authors } from './data.js';
+// import { authors } from './data.js';
 
 theme.init();
 bookList.init();
@@ -47,18 +47,13 @@ function handleListClick(event) {
       active = bookList.matches.find((book) => book.id === bookId);
     }
   }
-  if (active) {
-    const { author, description, image, published, title } = active;
-    document.querySelector('[data-list-active]').open = true;
-    document.querySelector('[data-list-blur]').src = image;
-    document.querySelector('[data-list-image]').src = image;
-    document.querySelector('[data-list-title]').innerText = title;
-    document.querySelector('[data-list-subtitle]').innerText =
-      `${authors[author]} (${new Date(published).getFullYear()})`;
-    document.querySelector('[data-list-description]').innerText = description;
-  }
+  const bookPreview = document.createElement('book-preview');
+  bookPreview.book = active;
+  document.body.appendChild(bookPreview);
+  bookPreview.addEventListener('close', () => {
+    document.body.removeChild(bookPreview);
+  });
 }
-
 // Event listeners
 document
   .querySelector('[data-search-form]')
