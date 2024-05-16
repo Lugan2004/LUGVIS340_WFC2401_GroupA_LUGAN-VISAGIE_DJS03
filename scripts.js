@@ -66,6 +66,7 @@ document
 document
   .querySelector('[data-settings-form]')
   .addEventListener('submit', handleSettingsSubmit);
+// remember to move to preview component
 document
   .querySelector('[data-list-items]')
   .addEventListener('click', handleListClick);
