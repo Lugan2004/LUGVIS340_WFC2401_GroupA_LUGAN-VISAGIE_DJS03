@@ -5,7 +5,7 @@ class BookPreview extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="book-preview-styles.css">
       
         <div class="overlay">
           <div class="overlay__preview">
