@@ -127,3 +127,17 @@
   height: 100vh;
   width: 100vw;
 }
+
+.backdrop {
+  display: none;
+  background: rgba(var(--color-dark), 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.overlay[open] ~ .backdrop {
+  display: block;
+}

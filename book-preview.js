@@ -6,7 +6,7 @@ class BookPreview extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
     <link rel="stylesheet" href="book-preview-styles.css">
-      
+      <body>
         <div class="overlay">
           <div class="overlay__preview">
             <img class="overlay__blur" data-list-blur src="" />
@@ -20,7 +20,10 @@ class BookPreview extends HTMLElement {
           <div class="overlay__row">
             <button class="overlay__button overlay__button_primary" data-list-close>Close</button>
           </div>
+          
         </div>
+        <div class="backdrop"></div>
+       </body>
       
       `;
   }

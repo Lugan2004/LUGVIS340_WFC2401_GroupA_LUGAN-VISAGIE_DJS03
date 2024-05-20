@@ -87,12 +87,12 @@ document
     'click',
     () => (document.querySelector('[data-settings-overlay]').open = true),
   );
-document
-  .querySelector('[data-list-close]')
-  .addEventListener(
-    'click',
-    () => (document.querySelector('[data-list-active]').open = false),
-  );
+// document
+//   .querySelector('[data-list-close]')
+//   .addEventListener(
+//     'click',
+//     () => (document.querySelector('[data-list-active]').open = false),
+//   );
 document
   .querySelector('[data-list-button]')
   .addEventListener('click', bookList.showMoreBooks.bind(bookList));

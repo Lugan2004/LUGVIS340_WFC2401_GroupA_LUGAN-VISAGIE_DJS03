@@ -27,17 +27,20 @@ export const bookList = {
   /**
    * Renders the book previews on the page.
    */
+
   renderBooks() {
     const start = (this.page - 1) * BOOKS_PER_PAGE;
     const end = start + BOOKS_PER_PAGE;
+    const listItemsContainer = document.querySelector('[data-list-items]');
     const fragment = document.createDocumentFragment();
+
     this.matches.slice(start, end).forEach((book) => {
       const preview = this.renderBookPreview(book);
       fragment.appendChild(preview);
     });
-    document.querySelector('[data-list-items]').appendChild(fragment);
-  },
 
+    listItemsContainer.appendChild(fragment);
+  },
   /**
    * Renders a dropdown menu with the given data.
    * @param {Object} data - The data to populate the dropdown with.
@@ -110,7 +113,8 @@ export const bookList = {
   /**
    * Shows more books on the page.
    */
-  showMoreBooks() {
+  showMoreBooks(event) {
+    event.preventDefault(); // Add this line to prevent the default behavior
     this.page += 1;
     this.renderBooks();
     this.updateListButton();
